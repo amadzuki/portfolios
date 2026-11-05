@@ -7,7 +7,7 @@ export const site = {
   email: 'hello@ahmadmarzuki.com',
   socials: [
     { label: 'GitHub', href: 'https://github.com/amadzuki' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ahmadmarzuki' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/amadzuki' },
   ],
 };
 

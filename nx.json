@@ -48,6 +48,16 @@
       "options": {
         "targetName": "e2e"
       }
+    },
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "typecheckTargetName": "vite:typecheck"
+      },
+      "include": ["apps/game/**"]
     }
   ],
   "analytics": false,

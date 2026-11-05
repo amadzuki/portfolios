@@ -1,0 +1,21 @@
+{
+  "name": "@portfolios/game",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "nx": {
+    "name": "game",
+    "tags": [
+      "scope:app"
+    ]
+  },
+  "scripts": {},
+  "dependencies": {
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.187.0",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0"
+  }
+}
