@@ -1,0 +1,9 @@
+/dist
+/coverage
+/.nx/cache
+/.nx/workspace-data
+bun.lock
+**/.next
+**/.react-router
+**/.output
+**/.tanstack
