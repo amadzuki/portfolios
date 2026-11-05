@@ -63,3 +63,4 @@ next-env.d.ts
 !.env.example
 vitest.config.*.timestamp*
 .vitest
+test-output

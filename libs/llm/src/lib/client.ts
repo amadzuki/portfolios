@@ -38,9 +38,7 @@ export type StreamResult = ReturnType<typeof sdkStreamText>;
 export interface LLMClient {
   getModel(role: ModelRole): LanguageModel;
   getEmbeddingModel(): EmbeddingModel;
-  generateText(
-    o: CallOptions,
-  ): Promise<{
+  generateText(o: CallOptions): Promise<{
     text: string;
     usage: LanguageModelUsage;
     finishReason: FinishReason;
