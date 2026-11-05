@@ -51,6 +51,8 @@ export interface LLMClient {
   ): Promise<{ object: z.infer<S>; usage: LanguageModelUsage }>;
   embed(values: string[], opts?: { signal?: AbortSignal }): Promise<number[][]>;
   describe(): Pick<LLMConfig, 'provider' | 'models' | 'embed'>;
+  /** Name of the missing API-key env var for the active provider, or null when ready. */
+  missingCredentials(): string | null;
 }
 
 const toPrompt = (o: CallOptions) =>
@@ -134,6 +136,15 @@ export function createLLM(deps: LLMClientDeps = {}): LLMClient {
         abortSignal: opts.signal,
       });
       return r.embeddings as number[][];
+    },
+
+    missingCredentials() {
+      if (deps.resolveModel) return null;
+      const c = config();
+      const adapter = providers[c.provider];
+      return adapter.apiKeyEnv && !c.settings(c.provider).apiKey
+        ? adapter.apiKeyEnv
+        : null;
     },
 
     /** Human-readable description of the active setup, handy for footers/debug pages. */

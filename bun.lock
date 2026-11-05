@@ -51,6 +51,7 @@
       "version": "0.0.1",
       "dependencies": {
         "@ai-sdk/react": "^4.0.167",
+        "@portfolios/content": "workspace:*",
         "@portfolios/llm": "workspace:*",
         "@portfolios/visuals": "workspace:*",
         "ai": "^7.0.163",
@@ -67,6 +68,10 @@
     },
     "apps/web-e2e": {
       "name": "web-e2e",
+      "version": "0.0.1",
+    },
+    "libs/content": {
+      "name": "@portfolios/content",
       "version": "0.0.1",
     },
     "libs/llm": {
@@ -614,6 +619,8 @@
     "@phenomnomnominal/tsquery": ["@phenomnomnominal/tsquery@6.2.0", "", { "dependencies": { "@types/esquery": "^1.5.4", "esquery": "^1.7.0" }, "peerDependencies": { "typescript": ">3.0.0" } }, "sha512-Vo9nkhfZxDB/sBiqIY3pjDC4mOSyure+AFlEW5hcy/tRE82MqCXjRN4InnVNMldinRt0dLYqg4HAU2XPq5e1LA=="],
 
     "@playwright/test": ["@playwright/test@1.64.1", "", { "dependencies": { "playwright": "1.64.1" }, "bin": { "playwright": "cli.js" } }, "sha512-IaYGml/nSOiZWROfPtuIL7neuu9qDOZ3TNvNljUIrhDMxiGTgPjzj/g9p9RxpS2tSepPDRY+UwAaEeiKtUvIAg=="],
+
+    "@portfolios/content": ["@portfolios/content@workspace:libs/content"],
 
     "@portfolios/game": ["@portfolios/game@workspace:apps/game"],
 

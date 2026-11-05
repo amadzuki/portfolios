@@ -113,6 +113,24 @@ describe('createLLM', () => {
     }
   });
 
+  it('reports the missing API key env var', () => {
+    expect(
+      createLLM({
+        config: loadConfig({ LLM_PROVIDER: 'glm' }),
+      }).missingCredentials(),
+    ).toBe('GLM_API_KEY');
+    expect(
+      createLLM({
+        config: loadConfig({ LLM_PROVIDER: 'glm', GLM_API_KEY: 'x' }),
+      }).missingCredentials(),
+    ).toBeNull();
+    expect(
+      createLLM({
+        config: loadConfig({ LLM_PROVIDER: 'ollama' }),
+      }).missingCredentials(),
+    ).toBeNull();
+  });
+
   it('explains when the provider has no embeddings', () => {
     const llm = createLLM({
       config: loadConfig({ LLM_PROVIDER: 'anthropic' }),
