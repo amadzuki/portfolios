@@ -1,0 +1,226 @@
+@import 'tailwindcss';
+
+/* An editorial, print-inspired look: warm paper, ink, and a vermilion accent. */
+:root {
+  --paper: #f3ede2;
+  --paper-2: #ebe3d4;
+  --card: #fbf8f2;
+  --ink: #1b1916;
+  --muted-ink: #6f675b;
+  --rule: #d8cebd;
+  --accent: #e4472b;
+  --c1: #e4472b;
+  --c2: #1f6f6a;
+  --c3: #d29b2a;
+  --c4: #3c4fb8;
+  --c5: #8e3b6b;
+  --c6: #6f8f5c;
+  --c7: #2b2724;
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
+  --font-sans: 'Instrument Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+}
+
+@theme inline {
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body {
+  min-height: 100dvh;
+  /* A faint paper grain. */
+  background-image:
+    radial-gradient(rgba(27, 25, 22, 0.035) 1px, transparent 1px),
+    radial-gradient(rgba(27, 25, 22, 0.025) 1px, transparent 1px);
+  background-size:
+    3px 3px,
+    7px 7px;
+  background-position:
+    0 0,
+    1px 2px;
+}
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-variation-settings: 'SOFT' 50;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-ink);
+}
+.field-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-ink);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+.rule {
+  border-color: var(--ink);
+}
+
+.btn {
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.6rem 1.1rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition:
+    transform 0.15s,
+    background 0.2s;
+}
+.btn:hover {
+  background: var(--accent);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
+  background: var(--card);
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+.chip:hover {
+  border-color: var(--ink);
+}
+.input {
+  width: 100%;
+  border: 1px solid var(--rule);
+  border-radius: 0.5rem;
+  background: var(--card);
+  padding: 0.45rem 0.6rem;
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+.input:focus,
+.chip:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 1rem;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 20px 40px -32px rgba(40, 30, 20, 0.45);
+}
+
+/* ─── Chart draw-in ─────────────────────────────────────────────────────────────────── */
+@keyframes grow-y {
+  from {
+    transform: scaleY(0);
+  }
+}
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+.chart .bar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: grow-y 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.chart .hbar {
+  transform-box: fill-box;
+  transform-origin: left;
+  animation: grow-x 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.chart .line {
+  stroke-dasharray: 1;
+  animation: draw 1.3s cubic-bezier(0.6, 0.1, 0.2, 1) both;
+}
+.chart .area {
+  animation: fade 1.1s 0.3s both;
+}
+.chart .annotation {
+  animation: fade 0.5s 1.1s both;
+}
+.chart .dots {
+  animation: fade 0.8s both;
+}
+.chart .slice {
+  animation: fade 0.5s both;
+  transition: d 0.2s;
+}
+.rise {
+  animation: rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--paper-2) 0%,
+    var(--card) 50%,
+    var(--paper-2) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+  border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  .chart * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

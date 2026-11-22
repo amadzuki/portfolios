@@ -7,7 +7,7 @@ Each app deliberately uses a different framework, chosen for what that framework
 | --------------------------- | ---------------- | ------------------------------------- | ----------- |
 | Personal site + "Ask Ahmad" | `apps/web`       | Next.js, three.js, d3                 | in progress |
 | Prompt-to-UI Playground     | `apps/prompt-ui` | TanStack Start, CodeMirror 6, sucrase | ✅          |
-| Chat-with-your-Data         | `apps/data-chat` | React Router v7                       | planned     |
+| Chat-with-your-Data         | `apps/data-chat` | React Router (framework mode), visx   | ✅          |
 | LLM layer                   | `libs/llm`       | Vercel AI SDK, provider-agnostic      | ✅          |
 
 ## Getting started
@@ -19,6 +19,7 @@ bunx nx run-many -t test typecheck
 bunx nx dev web        # http://localhost:3000
 bunx nx dev game       # http://localhost:4300
 bunx nx dev prompt-ui  # http://localhost:4400
+bunx nx dev data-chat  # http://localhost:4500
 bunx nx e2e web-e2e    # Playwright smoke tests (desktop + mobile)
 ```
 
@@ -37,3 +38,12 @@ knowledge base fits in the system prompt, each section tagged with an id; the mo
 `[exp-prospace]` and the widget renders them as links to the matching section. Requests are rate-limited
 and budget-capped, and the route returns a clear 503 when no API key is configured. Swap the model by
 editing `.env` only (see `libs/llm`).
+
+## Chat with your Data
+
+`apps/data-chat` uses React Router's framework mode for what it does well: a prerendered landing page,
+a `clientAction` that parses uploads in a Web Worker (Papa Parse) and stores them in IndexedDB, and a
+`clientAction` that calls the server `action` via `serverAction()` so only the schema reaches the server.
+The model returns a typed chart spec (`generateObject`), which is repaired against the real columns,
+aggregated over every row in the browser and drawn with visx. With no API key, a rule-based parser answers
+instead, so the demo always works. "What gets sent?" shows the exact payload.

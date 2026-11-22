@@ -47,9 +47,10 @@ export const projects: Project[] = [
     id: 'proj-data-chat',
     title: 'Chat with your Data',
     blurb:
-      'Drop a CSV and ask questions in plain language. The model writes chart specs; your data never leaves the browser.',
-    stack: ['React Router v7', 'visx', 'Web Workers'],
-    status: 'planned',
+      'Drop a CSV and ask questions in plain language. The model only sees column names and writes a chart spec; every row is parsed and aggregated in your browser.',
+    stack: ['React Router', 'visx', 'Web Workers', 'IndexedDB'],
+    href: 'https://data.ahmadmarzuki.com',
+    status: 'live',
   },
   {
     id: 'proj-saikou',

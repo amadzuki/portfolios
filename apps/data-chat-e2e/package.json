@@ -1,0 +1,10 @@
+{
+  "name": "data-chat-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "data-chat"
+    ]
+  }
+}

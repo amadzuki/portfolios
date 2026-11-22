@@ -26,6 +26,8 @@ const hrefFor = (p: Project) => {
     return process.env.NEXT_PUBLIC_GAME_URL ?? p.href;
   if (p.id === 'proj-prompt-ui')
     return process.env.NEXT_PUBLIC_PROMPT_UI_URL ?? p.href;
+  if (p.id === 'proj-data-chat')
+    return process.env.NEXT_PUBLIC_DATA_CHAT_URL ?? p.href;
   return p.href;
 };
 
