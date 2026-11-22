@@ -38,9 +38,10 @@ export const projects: Project[] = [
     id: 'proj-prompt-ui',
     title: 'Prompt-to-UI Playground',
     blurb:
-      'Describe a component, watch an LLM write React + Tailwind, and iterate on it in a live sandbox.',
-    stack: ['TanStack Start', 'CodeMirror', 'sandboxed iframe'],
-    status: 'planned',
+      'Describe a component, watch an LLM stream React + Tailwind into a live editor, then refine it with follow-up prompts. Code is compiled in the browser and runs in a locked-down sandboxed iframe; every version is kept and shareable by link.',
+    stack: ['TanStack Start', 'CodeMirror 6', 'sucrase', 'sandboxed iframe'],
+    href: 'https://ui.ahmadmarzuki.com',
+    status: 'live',
   },
   {
     id: 'proj-data-chat',

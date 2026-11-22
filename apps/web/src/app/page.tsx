@@ -21,10 +21,13 @@ const statusLabel = {
 } as const;
 
 /** Lets each deployment point at its own game URL (e.g. a preview). */
-const hrefFor = (p: Project) =>
-  p.id === 'proj-lumen-drift'
-    ? (process.env.NEXT_PUBLIC_GAME_URL ?? p.href)
-    : p.href;
+const hrefFor = (p: Project) => {
+  if (p.id === 'proj-lumen-drift')
+    return process.env.NEXT_PUBLIC_GAME_URL ?? p.href;
+  if (p.id === 'proj-prompt-ui')
+    return process.env.NEXT_PUBLIC_PROMPT_UI_URL ?? p.href;
+  return p.href;
+};
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (

@@ -57,7 +57,7 @@
         "previewTargetName": "preview",
         "typecheckTargetName": "vite:typecheck"
       },
-      "include": ["apps/game/**"]
+      "include": ["apps/game/**", "apps/prompt-ui/**"]
     }
   ],
   "analytics": false,
