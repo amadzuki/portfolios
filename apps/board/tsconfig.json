@@ -1,0 +1,17 @@
+{
+  "extends": "$app/tsconfig",
+  "include": ["src", "*.ts"],
+  "exclude": ["src/service-worker", "build"],
+  "compilerOptions": {
+    "strict": true,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "types": ["$app/types", "node"]
+  },
+  "references": [
+    {
+      "path": "../../libs/llm"
+    }
+  ]
+}

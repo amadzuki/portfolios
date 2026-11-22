@@ -53,6 +53,15 @@ export const projects: Project[] = [
     status: 'live',
   },
   {
+    id: 'proj-huddle',
+    title: 'Huddle',
+    blurb:
+      'A realtime sticky-note board: share a link, brainstorm together with live cursors, then let AI group the notes into themes while everyone watches them glide into place.',
+    stack: ['SvelteKit', 'Svelte 5', 'Yjs', 'WebSockets'],
+    href: 'https://board.ahmadmarzuki.com',
+    status: 'live',
+  },
+  {
     id: 'proj-saikou',
     title: 'saikou',
     blurb:

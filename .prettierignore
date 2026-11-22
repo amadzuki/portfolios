@@ -7,3 +7,4 @@ bun.lock
 **/.react-router
 **/.output
 **/.tanstack
+apps/prompt-ui/src/routeTree.gen.ts

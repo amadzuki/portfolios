@@ -1,0 +1,149 @@
+@import 'tailwindcss';
+
+:root {
+  --bg: #ecebf3;
+  --dot: #c9c6d9;
+  --ink: #1d1b26;
+  --muted: #6c6880;
+  --panel: rgba(255, 255, 255, 0.78);
+  --line: rgba(29, 27, 38, 0.1);
+  --accent: #6b4dff;
+  --lemon: #ffe066;
+  --peach: #ffb38a;
+  --mint: #9be8c4;
+  --sky: #9fd3ff;
+  --lilac: #c8b6ff;
+  --rose: #ff9bb3;
+  --font-ui:
+    'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-hand: 'Caveat Variable', 'Comic Sans MS', cursive;
+}
+
+@theme inline {
+  --font-ui: var(--font-ui);
+  --font-hand: var(--font-hand);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+.panel {
+  background: var(--panel);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  border: 1px solid var(--line);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 12px 32px -16px rgba(40, 30, 80, 0.35);
+}
+.tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 2.5rem;
+  min-width: 2.5rem;
+  padding: 0 0.75rem;
+  border-radius: 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    background 0.15s,
+    transform 0.15s;
+}
+.tool:hover {
+  background: rgba(29, 27, 38, 0.07);
+}
+.tool:active {
+  transform: scale(0.95);
+}
+.tool:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+.tool:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: white;
+  padding: 0.8rem 1.4rem;
+  font-weight: 600;
+  transition:
+    transform 0.15s,
+    box-shadow 0.2s;
+  box-shadow: 0 10px 30px -12px rgba(107, 77, 255, 0.7);
+}
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 36px -12px rgba(107, 77, 255, 0.85);
+}
+.magic {
+  background: linear-gradient(120deg, #6b4dff, #ff5da2 55%, #ffb347);
+  color: white;
+}
+.magic:hover {
+  background: linear-gradient(120deg, #5a3cf0, #f04d93 55%, #f5a233);
+}
+
+.note-lemon {
+  --note: var(--lemon);
+}
+.note-peach {
+  --note: var(--peach);
+}
+.note-mint {
+  --note: var(--mint);
+}
+.note-sky {
+  --note: var(--sky);
+}
+.note-lilac {
+  --note: var(--lilac);
+}
+.note-rose {
+  --note: var(--rose);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+}
+@keyframes shimmer {
+  to {
+    background-position: 200% 0;
+  }
+}
+.thinking {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

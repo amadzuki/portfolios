@@ -6,8 +6,10 @@ Each app deliberately uses a different framework, chosen for what that framework
 | Project                     | Path             | Stack                                 | Status      |
 | --------------------------- | ---------------- | ------------------------------------- | ----------- |
 | Personal site + "Ask Ahmad" | `apps/web`       | Next.js, three.js, d3                 | in progress |
+| Lumen Drift (web game)      | `apps/game`      | three.js, GLSL, WebAudio, Vite        | ✅          |
 | Prompt-to-UI Playground     | `apps/prompt-ui` | TanStack Start, CodeMirror 6, sucrase | ✅          |
 | Chat-with-your-Data         | `apps/data-chat` | React Router (framework mode), visx   | ✅          |
+| Huddle (multiplayer board)  | `apps/board`     | SvelteKit, Svelte 5, Yjs, WebSockets  | ✅          |
 | LLM layer                   | `libs/llm`       | Vercel AI SDK, provider-agnostic      | ✅          |
 
 ## Getting started
@@ -20,6 +22,7 @@ bunx nx dev web        # http://localhost:3000
 bunx nx dev game       # http://localhost:4300
 bunx nx dev prompt-ui  # http://localhost:4400
 bunx nx dev data-chat  # http://localhost:4500
+bunx nx dev board      # http://localhost:4600
 bunx nx e2e web-e2e    # Playwright smoke tests (desktop + mobile)
 ```
 
@@ -47,3 +50,13 @@ a `clientAction` that parses uploads in a Web Worker (Papa Parse) and stores the
 The model returns a typed chart spec (`generateObject`), which is repaired against the real columns,
 aggregated over every row in the browser and drawn with visx. With no API key, a rule-based parser answers
 instead, so the demo always works. "What gets sent?" shows the exact payload.
+
+## Huddle
+
+`apps/board` is a realtime sticky-note board on SvelteKit. Svelte 5 runes keep the UI fine-grained while
+dozens of cursors and notes update at once, and `Spring` motion makes remote moves and the AI tidy-up glide.
+State is a Yjs document synced over a small y-websocket-compatible server (`src/lib/server/sync.ts`), which is
+attached to Vite in development and to `server.ts` in production (`node server.ts`, one port for pages and
+sockets). "Tidy up" sends only note texts to `/api/tidy`, which asks the LLM layer for themes (keyword
+clustering without a key) and lays them out as frames in one undoable transaction. "Start a board" is a
+SvelteKit form action, so it works before JavaScript loads.
